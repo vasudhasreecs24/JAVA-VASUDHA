@@ -1,4 +1,4 @@
-import java.util.Scanner;
+ import java.util.Scanner;
 
 class Books {
     String name;
@@ -6,6 +6,7 @@ class Books {
     int price;
     int numPages;
 
+    // Constructor
     Books(String name, String author, int price, int numPages) {
         this.name = name;
         this.author = author;
@@ -13,51 +14,49 @@ class Books {
         this.numPages = numPages;
     }
 
+    // toString method to display details
     public String toString() {
-        String name, author, price, numPages;
-        name = "Book name: " + this.name + "\n";
-        author = "Author name: " + this.author + "\n";
-        price = "Price: " + this.price + "\n";
-        numPages = "Number of pages: " + this.numPages + "\n";
-        return name + author + price + numPages;
+        return "Book Name: " + name + "\n" +
+               "Author Name: " + author + "\n" +
+               "Price: " + price + "\n" +
+               "Number of Pages: " + numPages + "\n";
     }
 }
 
-public class lab3{
-    public static void main(String args[]) {
+public class lab3 {
+    public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-        int n;
-        String name;
-        String author;
-        int price;
-        int numPages;
-
+        
         System.out.print("Enter number of books: ");
-        n = s.nextInt();
+        int n = s.nextInt();
         s.nextLine(); // consume newline
 
-        Books b[];
-        b = new Books[n];
+        Books[] b = new Books[n];
 
         for (int i = 0; i < n; i++) {
-            System.out.println("\nEnter details of Book " + (i + 1) + ":");
-            System.out.print("Enter Book name: ");
-            name = s.nextLine();
-            System.out.print("Enter Author name: ");
-            author = s.nextLine();
-            System.out.print("Enter Price: ");
-            price = s.nextInt();
-            System.out.print("Enter Number of pages: ");
-            numPages = s.nextInt();
+            System.out.println("\nEnter details for Book " + (i + 1) + ":");
+
+            System.out.print("Enter Book Name: ");
+            String name = s.nextLine();
+
+            System.out.print("Enter Author Name: ");
+            String author = s.nextLine();
+
+            System.out.print("Enter Book Price: ");
+            int price = s.nextInt();
+
+            System.out.print("Enter Number of Pages: ");
+            int numPages = s.nextInt();
             s.nextLine(); // consume newline
+
             b[i] = new Books(name, author, price, numPages);
         }
 
         System.out.println("\n--- Book Details ---");
         for (int i = 0; i < n; i++) {
-            System.out.println("\nBook " + (i + 1) + " Details:");
-            System.out.println(b[i].toString());
+            System.out.println("Book " + (i + 1) + " details are:\n" + b[i]);
         }
+
         s.close();
     }
 }
